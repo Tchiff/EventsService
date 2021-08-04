@@ -5,14 +5,14 @@ namespace EventsService
 	public class EventServiceModel : MonoBehaviour, IEventServiceModel
 	{
 		[SerializeField] private int _cooldownBeforeSend;
-		[SerializeField] private string _urlAnalyticsServer;
+		[SerializeField] private string _serverUrl;
 
 		private IEventPnkHandler _pnkHandler;
 		private float _timer;
 
 		private void Awake()
 		{
-			_pnkHandler = new EventPnkHandler(_urlAnalyticsServer, new JsonSerializer());
+			_pnkHandler = new EventPnkHandler(_serverUrl, new JsonSerializer());
 			_pnkHandler.SendAllEvents(TryUpdateTimer);
 		}
 
